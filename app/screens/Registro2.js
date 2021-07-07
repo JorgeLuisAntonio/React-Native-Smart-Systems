@@ -4,6 +4,7 @@ import { TextInput } from 'react-native-paper';
 import { Icon, Button } from "react-native-elements";
 import { Picker } from '@react-native-picker/picker';
 import { size, isEmpty } from "lodash";
+import { validateEmail } from "../utils/validations";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Toast from "react-native-easy-toast";
 
@@ -34,6 +35,10 @@ export default function Registro2(props) {
             isEmpty(formData.correoSecundario)
         ) {
             toastRef.current.show("Todos los campos son obligatorios");
+        } else if (!validateEmail(formData.correoPrincipal) || !validateEmail(formData.correoSecundario)) {
+            toastRef.current.show("El email no es correcto");
+        } else if (size(formData.celular) < 11 || size(formData.telefonoTrabajo) < 11 || size(formData.telefonoOficina) < 11) {
+            toastRef.current.show("El telefono debe tener mas de 11 digitos");
         }
         else {
             navigation.navigate("registrotres", {

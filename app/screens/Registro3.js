@@ -16,7 +16,7 @@ export default function Registro3(props) {
     const toastRef = useRef();
 
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
+    patron = /[3_4(5!6"7#2=8{9*}&,;'*+%[:)-1]/;
     useEffect(() => {
         setFormData({ ...formData, "conocimiento": selected });
     }, [selected]);
@@ -32,6 +32,11 @@ export default function Registro3(props) {
             isEmpty(formData.conocimiento)
         ) {
             toastRef.current.show("Todos los campos son obligatorios");
+        } else if (patron.test(formData.usuario) ||
+            patron.test(formData.contraseña ||
+                patron.test(formData.repetirContraseña))) {
+            toastRef.current.show("No debe llevar numeros o caracteres especiales");
+
         } else if (isEnabled == false) {
             toastRef.current.show("Permite las condiciones para avanzar");
         }
@@ -90,7 +95,9 @@ export default function Registro3(props) {
             </View>
             <Toast ref={toastRef} position="center" opacity={0.9} />
             <View flexDirection={'row'} marginHorizontal={75} marginBottom={20} alignItems={'center'}>
-                <Text>He leído y acpetado los terminos y condiciones</Text>
+                <Text
+                    onPress={() => Linking.openURL('http://google.com')}
+                >He leído y acpetado los terminos y condiciones</Text>
                 <Switch
                     trackColor={{ false: "#767577", true: "#78A22F" }}
                     thumbColor={isEnabled ? "#f4f3f4" : "#f4f3f4"}

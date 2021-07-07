@@ -25,19 +25,23 @@ export default function Registro(props) {
     const onSubmit = () => {
 
         if (
-            isEmpty(formData.nombre)
+            isEmpty(formData.nombre) ||
             //xdddd
-            // isEmpty(formData.apMaterno) ||
-            // isEmpty(formData.apPaterno) ||
-            //  isEmpty(formData.colonia) ||
-            //  isEmpty(formData.cp) ||
-            //  isEmpty(formData.ciudad) ||
-            //  isEmpty(formData.estado) ||
-            //  formData.sexo == "" ||
-            //  formData.sexo == undefined
+            isEmpty(formData.apMaterno) ||
+            isEmpty(formData.apPaterno) ||
+            isEmpty(formData.colonia) ||
+            isEmpty(formData.cp) ||
+            isEmpty(formData.ciudad) ||
+            isEmpty(formData.estado) ||
+            formData.sexo == "" ||
+            formData.sexo == undefined
         ) {
             toastRef.current.show("Todos los campos son obligatorios");
-        } else if (patron.test(formData.nombre)) {
+        } else if (patron.test(formData.nombre) ||
+            patron.test(formData.apMaterno) ||
+            patron.test(formData.apPaterno) ||
+            patron.test(formData.ciudad) ||
+            patron.test(formData.estado)) {
             toastRef.current.show("No debe llevar numero o caracteres especiales");
         }
         else {
