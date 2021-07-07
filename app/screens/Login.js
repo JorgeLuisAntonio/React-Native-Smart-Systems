@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, TextInput, ImageBackground, ScrollView, Image } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
@@ -6,7 +5,7 @@ import Toast from "react-native-easy-toast";
 import { size, isEmpty } from "lodash";
 import { validateEmail } from "../utils/validations";
 export default function Login(props) {
-
+    //xddddddd
     const toastRef = useRef();
     const { navigation } = props;
     const [showPassword, setShowPassword] = useState(false);
