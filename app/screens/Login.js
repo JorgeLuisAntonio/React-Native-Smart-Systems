@@ -5,7 +5,7 @@ import Toast from "react-native-easy-toast";
 import { size, isEmpty } from "lodash";
 import { validateEmail } from "../utils/validations";
 export default function Login(props) {
-    //Stage all changes -> push para actualizar en github
+    //Stage all changes -> cntrl + enter ->-> push para actualizar en github
     const toastRef = useRef();
     const { navigation } = props;
     const [showPassword, setShowPassword] = useState(false);
