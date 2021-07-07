@@ -26,6 +26,7 @@ export default function Registro(props) {
 
         if (
             isEmpty(formData.nombre)
+            //xdddd
             // isEmpty(formData.apMaterno) ||
             // isEmpty(formData.apPaterno) ||
             //  isEmpty(formData.colonia) ||
