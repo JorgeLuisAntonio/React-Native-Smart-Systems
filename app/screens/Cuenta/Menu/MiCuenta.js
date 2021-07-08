@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, View } from "react-native";
-export default function Trabajador() {
+export default function MiCuenta() {
     return (
-        <View>
-            <Text>PRODUCTO</Text>
+        <View marginTop={40}>
+            <Text>Mi cuenta</Text>
         </View>
     );
 }

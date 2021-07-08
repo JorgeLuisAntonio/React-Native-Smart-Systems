@@ -4,14 +4,11 @@ import { Icon } from "react-native-elements";
 import { NavigationContainer } from "@react-navigation/native";
 //se importa la funcion createbotton tab
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 // la funcion tab va crear un componente
 import ProductosStack from "./stacks/ProductoStack";
-//import TrabajadorStack from "./TrabajadorStack";
-//import TopRestaurantsStack from "./TopRestaurantsStack";
-//import SearchStack from "./SearchStack";
-//import AccountStack from "./AccountStack";
-
+import ComisionesStack from "./stacks/ComisionesStack";
+import ReferenciadosStack from "./stacks/ReferenciadosStack"
+import InicioStack from "./stacks/InicioStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,10 +16,10 @@ export default function CuentaNavigation() {
     return (
 
         <Tab.Navigator
-            initialRouteName="productos"
+            initialRouteName="inicio"
             tabBarOptions={{
                 inactiveTintColor: "#646464",
-                activeTintColor: "#0060C1",
+                activeTintColor: "#78A22F",
             }}
 
             screenOptions={({ route }) => ({
@@ -35,6 +32,27 @@ export default function CuentaNavigation() {
                 component={ProductosStack}
                 options={{
                     title: "Productos"
+                }}
+            />
+            <Tab.Screen
+                name="inicio"
+                component={InicioStack}
+                options={{
+                    title: "Inicio"
+                }}
+            />
+            <Tab.Screen
+                name="comisiones"
+                component={ComisionesStack}
+                options={{
+                    title: "Comisiones"
+                }}
+            />
+            <Tab.Screen
+                name="referenciados"
+                component={ReferenciadosStack}
+                options={{
+                    title: "Referenciados"
                 }}
             />
 
@@ -51,13 +69,13 @@ function screenOptions(route, color) {
         case "productos":
             iconName = "clipboard-list-outline";
             break;
-        case "trabajadores":
+        case "comisiones":
             iconName = "badge-account-outline";
             break;
-        case "top-restaurants":
+        case "referenciados":
             iconName = "star-outline";
             break;
-        case "search":
+        case "inicio":
             iconName = "magnify";
             break;
         case "account":
