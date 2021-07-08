@@ -37,8 +37,8 @@ export default function Registro2(props) {
             toastRef.current.show("Todos los campos son obligatorios");
         } else if (!validateEmail(formData.correoPrincipal) || !validateEmail(formData.correoSecundario)) {
             toastRef.current.show("El email no es correcto");
-        } else if (size(formData.celular) < 11 || size(formData.telefonoTrabajo) < 11 || size(formData.telefonoOficina) < 11) {
-            toastRef.current.show("El telefono debe tener mas de 11 digitos");
+        } else if (size(formData.celular) < 10 || size(formData.telefonoTrabajo) < 10 || size(formData.telefonoOficina) < 10) {
+            toastRef.current.show("El telefono debe tener mas de 10 digitos");
         }
         else {
             navigation.navigate("registrotres", {

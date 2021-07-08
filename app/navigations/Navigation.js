@@ -44,6 +44,7 @@ export default function Navigation() {
                     name="registrodos"
                     component={RegistroSegundo}
                     options={{
+
                         title: "Registro de Usuario", headerStyle: {
                             backgroundColor: '#ffffff',
 
@@ -71,6 +72,14 @@ export default function Navigation() {
                             textAlign: "auto"
                         },
                     }}
+                />
+
+                <Stack.Screen
+                    name="cuenta"
+
+                    component={CuentaNavigation}
+                    options={{ headerShown: false }}
+                //  options={{ title: "CuentaStack" }}
                 />
 
 

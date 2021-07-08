@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { StyleSheet, View, Switch, Text } from "react-native";
+import { StyleSheet, View, Switch, Text, Linking } from "react-native";
 import { TextInput } from 'react-native-paper';
 import { Button } from "react-native-elements";
-import { isEmpty } from "lodash";
+import { isEmpty, size } from "lodash";
 import { Picker } from '@react-native-picker/picker';
 import Toast from "react-native-easy-toast";
 export default function Registro3(props) {
@@ -32,11 +32,14 @@ export default function Registro3(props) {
             isEmpty(formData.conocimiento)
         ) {
             toastRef.current.show("Todos los campos son obligatorios");
-        } else if (patron.test(formData.usuario) ||
-            patron.test(formData.contraseña ||
-                patron.test(formData.repetirContraseña))) {
+        } else if (patron.test(formData.usuario)) {
             toastRef.current.show("No debe llevar numeros o caracteres especiales");
 
+        } else if (!patron.test(formData.contraseña) || size(formData.contraseña) < 8 || !patron.test(formData.repetirContraseña)
+            || size(formData.repetirContraseña) < 8) {
+            toastRef.current.show("La contraseña debe tener caracteres, numeros y ser mayor a 8 caracteres ");
+        } else if (formData.contraseña != formData.repetirContraseña) {
+            toastRef.current.show("La contraseña deben ser iguales ");
         } else if (isEnabled == false) {
             toastRef.current.show("Permite las condiciones para avanzar");
         }
@@ -97,7 +100,7 @@ export default function Registro3(props) {
             <View flexDirection={'row'} marginHorizontal={75} marginBottom={20} alignItems={'center'}>
                 <Text
                     onPress={() => Linking.openURL('http://google.com')}
-                >He leído y acpetado los terminos y condiciones</Text>
+                >He leído y aceptado los terminos y condiciones</Text>
                 <Switch
                     trackColor={{ false: "#767577", true: "#78A22F" }}
                     thumbColor={isEnabled ? "#f4f3f4" : "#f4f3f4"}
