@@ -32,12 +32,10 @@ export default function Registro3(props) {
             isEmpty(formData.conocimiento)
         ) {
             toastRef.current.show("Todos los campos son obligatorios");
-        } else if (patron.test(formData.usuario)) {
-            toastRef.current.show("No debe llevar numeros o caracteres especiales");
-
-        } else if (!patron.test(formData.contraseña) || size(formData.contraseña) < 8 || !patron.test(formData.repetirContraseña)
-            || size(formData.repetirContraseña) < 8) {
-            toastRef.current.show("La contraseña debe tener caracteres, numeros y ser mayor a 8 caracteres ");
+        }
+        else if (!patron.test(formData.contraseña) || size(formData.contraseña) < 8
+        ) {
+            toastRef.current.show("La contraseña debe tener caracteres, numeros y ser mayor a 8 caracteres ", 4000);
         } else if (formData.contraseña != formData.repetirContraseña) {
             toastRef.current.show("La contraseña deben ser iguales ");
         } else if (isEnabled == false) {

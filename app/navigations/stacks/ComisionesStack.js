@@ -11,7 +11,7 @@ export default function ComisionesStack() {
             <Stack.Screen
                 name="comisiones"
                 component={Comisiones}
-                options={{ headerLeft: false, title: "Comisiones" }}
+                options={{ headerShown: false }}
             />
         </Stack.Navigator>
 

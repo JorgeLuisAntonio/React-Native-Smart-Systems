@@ -26,9 +26,10 @@ export default function Registro(props) {
 
         if (
             isEmpty(formData.nombre) ||
-            //xdddd
-            isEmpty(formData.apMaterno) ||
             isEmpty(formData.apPaterno) ||
+            isEmpty(formData.apMaterno) ||
+            isEmpty(formData.calle) ||
+            isEmpty(formData.numeroInt) ||
             isEmpty(formData.colonia) ||
             isEmpty(formData.cp) ||
             isEmpty(formData.ciudad) ||
@@ -37,12 +38,17 @@ export default function Registro(props) {
             formData.sexo == undefined
         ) {
             toastRef.current.show("Todos los campos son obligatorios");
-        } else if (patron.test(formData.nombre) ||
-            patron.test(formData.apMaterno) ||
-            patron.test(formData.apPaterno) ||
-            patron.test(formData.ciudad) ||
-            patron.test(formData.estado)) {
-            toastRef.current.show("No debe llevar numero o caracteres especiales");
+        } else if (patron.test(formData.nombre)) {
+            toastRef.current.show("Nombre no debe llevar numero o caracteres especiales", 2000);
+        } else if (patron.test(formData.apPaterno)) {
+            toastRef.current.show("Apellido Paterno no debe llevar numero o caracteres especiales", 2000);
+        } else if (patron.test(formData.apMaterno)) {
+            toastRef.current.show("Apellido Materno no debe llevar numero o caracteres especiales", 2000);
+        } else if (patron.test(formData.ciudad)) {
+            toastRef.current.show("Ciudad no debe llevar numero o caracteres especiales", 2000);
+        }
+        else if (patron.test(formData.estado)) {
+            toastRef.current.show("Estado no debe llevar numero o caracteres especiales", 2000);
         }
         else {
             navigation.navigate("registrodos", {

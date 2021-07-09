@@ -11,7 +11,7 @@ export default function ReferenciadosStack() {
             <Stack.Screen
                 name="refrenciados"
                 component={Referenciados}
-                options={{ headerLeft: false, title: "Referenciados" }}
+                options={{ headerShown: false }}
             />
         </Stack.Navigator>
 

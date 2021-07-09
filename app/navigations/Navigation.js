@@ -1,4 +1,5 @@
 import React from "react";
+import { Icon } from "react-native-elements";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Bienvenida from "../screens/Bienvenida"
@@ -10,7 +11,8 @@ import RegistroTercero from "../screens/Registro3"
 
 const Stack = createStackNavigator();
 
-export default function Navigation() {
+export default function Navigation(props) {
+    const { navigation } = props;
     return (
         <NavigationContainer>
             <Stack.Navigator>
@@ -79,8 +81,19 @@ export default function Navigation() {
 
                     component={CuentaNavigation}
                     options={{ headerShown: false }}
-                //  options={{ title: "CuentaStack" }}
+                /*
+                options={{
+                    title: "Smart Referencer", headerLeft: () => (
+                        <Icon type="material-community"
+                            name="menu"
+                            onPress={() => navigation.openDrawer()}
+                        />
+                    )
+                }}
+*/
                 />
+
+
 
 
             </Stack.Navigator>
